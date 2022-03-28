@@ -11,9 +11,8 @@ RUN apt-get update
 RUN apt-get install --assume-yes curl git-core \
 	zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev \
 	sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common \
-	libffi-dev nodejs yarn postgresql libpq-dev
+	libffi-dev postgresql libpq-dev
 
-RUN apt install -y curl
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 ENV NVM_DIR=/root/.nvm
 RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION} --lts
