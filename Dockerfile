@@ -13,11 +13,12 @@ RUN apt-get install --assume-yes \
 	libpq-dev postgresql \
 	libsodium-dev
 
-RUN useradd -rm -d /home/ruby -s /bin/bash -g root -G sudo -u 1001 ruby
-USER ruby
-WORKDIR /home/ruby
+RUN useradd -rm -d /home/vscode -s /bin/bash -g root -G sudo -u 1001 vscode
+RUN chown -R vscode /usr/local/bundle
+USER vscode
+WORKDIR /home/vscode
 
-RUN mkdir -p /home/ruby/www
+RUN mkdir -p /home/vscode/www
 
 RUN gem install nokogiri -v 1.12.5
 RUN gem install debase -v 0.2.4.1
