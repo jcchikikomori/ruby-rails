@@ -5,11 +5,13 @@ ENV GEM_PATH="/usr/local/rvm/gems/ruby-${RUBY_VERSION}"
 ENV PATH="/home/vscode/.rvm/bin:/usr/local/bundle/bin:${PATH}" \
 	PATH="/usr/local/rvm/rubies/default/bin:/usr/local/rvm/gems/default@global/bin:/usr/local/rvm/rubies/default/bin:/usr/local/rvm/bin:${PATH}"
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update
 RUN apt-get install --assume-yes curl git-core \
 	zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev \
 	sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common \
-	libffi-dev nodejs yarn
+	libffi-dev nodejs yarn postgresql libpq-dev
 
 RUN apt install -y curl
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
